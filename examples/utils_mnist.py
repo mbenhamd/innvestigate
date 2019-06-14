@@ -17,12 +17,12 @@ import six
 
 import numpy as np
 
-import keras
-from keras import backend as K
-from keras.datasets import mnist
-from keras.models import Model
-from keras.layers import Dense, Dropout, Activation, Input
-from keras.optimizers import Adam
+import tensorflow.keras
+from tensorflow.keras import backend as K
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense, Dropout, Activation, Input
+from tensorflow.keras.optimizers import Adam
 
 import innvestigate
 import innvestigate.applications.mnist
