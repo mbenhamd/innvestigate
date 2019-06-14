@@ -9,8 +9,8 @@ from builtins import range
 ###############################################################################
 
 
-import keras.models
-import keras.engine.topology
+import tensorflow.keras.models
+import tensorflow.keras.engine.topology
 
 
 from ... import utils as iutils
