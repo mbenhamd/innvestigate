@@ -16,10 +16,8 @@ import tensorflow.keras.regularizers
 from keras.utils import conv_utils
 import numpy as np
 
-
 from . import utils as iutils
 from .utils.tensorflow.keras import backend as iK
-
 
 __all__ = [
     "Constant",
