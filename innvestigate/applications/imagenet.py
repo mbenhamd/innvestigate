@@ -89,7 +89,7 @@ def _get_patterns_info(netname, pattern_type):
 ###############################################################################
 
 
-def _prepare_tensorflow.keras_net(netname,
+def _prepare_keras_net(netname,
                        clazz,
                        image_shape,
                        preprocess_f,
@@ -152,7 +152,7 @@ def _prepare_tensorflow.keras_net(netname,
 
 
 def vgg16(load_weights=False, load_patterns=False):
-    return _prepare_tensorflow.keras_net(
+    return _prepare_keras_net(
         "vgg16",
         tensorflow.keras.applications.vgg16.VGG16,
         [224, 224],
@@ -164,7 +164,7 @@ def vgg16(load_weights=False, load_patterns=False):
 
 
 def vgg19(load_weights=False, load_patterns=False):
-    return _prepare_tensorflow.keras_net(
+    return _prepare_keras_net(
         "vgg19",
         tensorflow.keras.applications.vgg19.VGG19,
         [224, 224],
@@ -181,7 +181,7 @@ def vgg19(load_weights=False, load_patterns=False):
 
 
 def resnet50(load_weights=False, load_patterns=False):
-    return _prepare_tensorflow.keras_net(
+    return _prepare_keras_net(
         "resnet50",
         tensorflow.keras.applications.resnet50.ResNet50,
         [224, 224],
@@ -198,7 +198,7 @@ def resnet50(load_weights=False, load_patterns=False):
 
 
 def inception_v3(load_weights=False, load_patterns=False):
-    return _prepare_tensorflow.keras_net(
+    return _prepare_keras_net(
         "inception_v3",
         tensorflow.keras.applications.inception_v3.InceptionV3,
         [299, 299],
@@ -214,7 +214,7 @@ def inception_v3(load_weights=False, load_patterns=False):
 
 
 def inception_resnet_v2(load_weights=False, load_patterns=False):
-    return _prepare_tensorflow.keras_net(
+    return _prepare_keras_net(
         "inception_resnet_v2",
         tensorflow.keras.applications.inception_resnet_v2.InceptionResNetV2,
         [299, 299],
@@ -230,7 +230,7 @@ def inception_resnet_v2(load_weights=False, load_patterns=False):
 
 
 def densenet121(load_weights=False, load_patterns=False):
-    return _prepare_tensorflow.keras_net(
+    return _prepare_keras_net(
         "densenet121",
         tensorflow.keras.applications.densenet.DenseNet121,
         [224, 224],
@@ -241,7 +241,7 @@ def densenet121(load_weights=False, load_patterns=False):
 
 
 def densenet169(load_weights=False, load_patterns=False):
-    return _prepare_tensorflow.keras_net(
+    return _prepare_keras_net(
         "densenet169",
         tensorflow.keras.applications.densenet.DenseNet169,
         [224, 224],
@@ -252,7 +252,7 @@ def densenet169(load_weights=False, load_patterns=False):
 
 
 def densenet201(load_weights=False, load_patterns=False):
-    return _prepare_tensorflow.keras_net(
+    return _prepare_keras_net(
         "densenet201",
         tensorflow.keras.applications.densenet.DenseNet201,
         [224, 224],
@@ -271,7 +271,7 @@ def nasnet_large(load_weights=False, load_patterns=False):
     if K.image_data_format() == "channels_first":
         raise Exception("NASNet is not available for channels first.")
 
-    return _prepare_tensorflow.keras_net(
+    return _prepare_keras_net(
         "nasnet_large",
         tensorflow.keras.applications.nasnet.NASNetLarge,
         [331, 331],
@@ -286,7 +286,7 @@ def nasnet_mobile(load_weights=False, load_patterns=False):
     if K.image_data_format() == "channels_first":
         raise Exception("NASNet is not available for channels first.")
 
-    return _prepare_tensorflow.keras_net(
+    return _prepare_keras_net(
         "nasnet_mobile",
         tensorflow.keras.applications.nasnet.NASNetMobile,
         [224, 224],

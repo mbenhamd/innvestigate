@@ -13,7 +13,7 @@ import tensorflow.keras.backend as K
 import tensorflow.keras.constraints
 import tensorflow.keras.layers
 import tensorflow.keras.regularizers
-from tensorflow.keras.utils import conv_utils
+from keras.utils import conv_utils
 import numpy as np
 
 
