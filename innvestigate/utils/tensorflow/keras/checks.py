@@ -9,7 +9,7 @@ from __future__ import\
 
 
 import inspect
-import tensorflow.keras.engine.topology
+import keras.engine.topology
 import tensorflow.keras.layers
 import tensorflow.keras.layers.advanced_activations
 import tensorflow.keras.layers.convolutional
@@ -74,7 +74,7 @@ def get_known_layers():
 
     # Inside function to not break import if Keras changes.
     KNOWN_LAYERS = (
-        tensorflow.keras.engine.topology.InputLayer,
+        keras.engine.topology.InputLayer,
         tensorflow.keras.layers.advanced_activations.ELU,
         tensorflow.keras.layers.advanced_activations.LeakyReLU,
         tensorflow.keras.layers.advanced_activations.PReLU,
@@ -297,7 +297,7 @@ def is_convnet_layer(layer):
     """Checks if layer is from a convolutional network."""
     # Inside function to not break import if Keras changes.
     CONVNET_LAYERS = (
-        tensorflow.keras.engine.topology.InputLayer,
+        keras.engine.topology.InputLayer,
         tensorflow.keras.layers.advanced_activations.ELU,
         tensorflow.keras.layers.advanced_activations.LeakyReLU,
         tensorflow.keras.layers.advanced_activations.PReLU,
