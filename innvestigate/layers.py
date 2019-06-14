@@ -8,12 +8,12 @@ from builtins import range, zip
 ###############################################################################
 ###############################################################################
 
-import keras
-import keras.backend as K
-import keras.constraints
-import keras.layers
-import keras.regularizers
-from keras.utils import conv_utils
+import tensorflow.keras
+import tensorflow.keras.backend as K
+import tensorflow.keras.constraints
+import tensorflow.keras.layers
+import tensorflow.keras.regularizers
+from tensorflow.keras.utils import conv_utils
 import numpy as np
 
 
