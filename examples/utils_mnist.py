@@ -17,12 +17,12 @@ import six
 
 import numpy as np
 
-import keras
-from keras import backend as K
-from keras.datasets import mnist
-from keras.models import Model
-from keras.layers import Dense, Dropout, Activation, Input
-from keras.optimizers import Adam
+import tensorflow.keras
+from tensorflow.keras import backend as K
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense, Dropout, Activation, Input
+from tensorflow.keras.optimizers import Adam
 
 import innvestigate
 import innvestigate.applications.mnist
@@ -133,8 +133,8 @@ def train_model(model, data, batch_size=128, epochs=20):
 
     x_train, y_train, x_test, y_test = data
     # convert class vectors to binary class matrices
-    y_train = keras.utils.to_categorical(y_train, num_classes)
-    y_test = keras.utils.to_categorical(y_test, num_classes)
+    y_train = tensorflow.keras.utils.to_categorical(y_train, num_classes)
+    y_test = tensorflow.keras.utils.to_categorical(y_test, num_classes)
 
     model.compile(loss="categorical_crossentropy",
                   optimizer=Adam(),

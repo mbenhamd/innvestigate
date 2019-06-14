@@ -18,10 +18,10 @@ import six
 import matplotlib
 
 import imp
-import keras.backend
-import keras.models
-import keras.preprocessing.image
-import keras.utils
+import tensorflow.keras.backend
+import tensorflow.keras.models
+import tensorflow.keras.preprocessing.image
+import tensorflow.keras.utils
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
@@ -46,7 +46,7 @@ eutils = imp.load_source("utils", os.path.join(base_dir, "utils.py"))
 # Path to train and validation images of Imagenet.
 # Each directory should contain one directory for each class which contains
 # the according images,
-# see https://keras.io/preprocessing/image/#imagedatagenerator-class
+# see https://tensorflow.keras.io/preprocessing/image/#imagedatagenerator-class
 # function flow_from_directory().
 imagenet_train_dir = "/temp/datasets/imagenet/2012/train_set_small"
 imagenet_val_dir = "/temp/datasets/imagenet/2012/train_set_small"
@@ -73,13 +73,13 @@ if __name__ == "__main__":
     ###########################################################################
     tmp = getattr(innvestigate.applications.imagenet, netname)
     net = tmp(load_weights=True)
-    model = keras.models.Model(inputs=net["in"], outputs=net["out"])
+    model = tensorflow.keras.models.Model(inputs=net["in"], outputs=net["out"])
     model.compile(optimizer="adam", loss="categorical_crossentropy")
-    modelp = keras.models.Model(inputs=net["in"], outputs=net["sm_out"])
+    modelp = tensorflow.keras.models.Model(inputs=net["in"], outputs=net["sm_out"])
     modelp.compile(optimizer="adam", loss="categorical_crossentropy",
                    metrics=["accuracy"])
     if gpu_count > 1:
-        modelp = keras.utils.multi_gpu_model(modelp, gpus=gpu_count)
+        modelp = tensorflow.keras.utils.multi_gpu_model(modelp, gpus=gpu_count)
         modelp.compile(optimizer="adam",
                        loss="categorical_crossentropy",
                        metrics=["accuracy"])
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     # Create data loaders.
     ###########################################################################
 
-    if keras.backend.image_data_format() == "channels_first":
+    if tensorflow.keras.backend.image_data_format() == "channels_first":
         target_size = net["input_shape"][2:4]
     else:
         target_size = net["input_shape"][1:3]
@@ -98,10 +98,10 @@ if __name__ == "__main__":
         X = net["preprocess_f"](X)
         return X
 
-    train_data_generator = keras.preprocessing.image.ImageDataGenerator(
+    train_data_generator = tensorflow.keras.preprocessing.image.ImageDataGenerator(
         preprocessing_function=preprocess,
         horizontal_flip=True)
-    test_data_generator = keras.preprocessing.image.ImageDataGenerator(
+    test_data_generator = tensorflow.keras.preprocessing.image.ImageDataGenerator(
         preprocessing_function=preprocess)
 
     train_generator = train_data_generator.flow_from_directory(
@@ -151,7 +151,7 @@ if __name__ == "__main__":
     # Utility functions.
     ###########################################################################
     color_conversion = "BGRtoRGB" if net["color_coding"] == "BGR" else None
-    channels_first = keras.backend.image_data_format == "channels_first"
+    channels_first = tensorflow.keras.backend.image_data_format == "channels_first"
 
     def preprocess(X):
         X = X.copy()

@@ -43,7 +43,7 @@ if __name__ == "__main__":
 
     import innvestigate
     import innvestigate.utils
-    import keras.applications.vgg16 as vgg16
+    import tensorflow.keras.applications.vgg16 as vgg16
 
     # Get model
     model, preprocess = vgg16.VGG16(), vgg16.preprocess_input
