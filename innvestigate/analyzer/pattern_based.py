@@ -22,7 +22,7 @@ from . import base
 from .. import layers as ilayers
 from .. import utils
 from .. import tools as itools
-from ..utils import tensorflow.keras as kutils
+from ..utils.tensorflow import keras as kutils
 from ..utils.tensorflow.keras import checks as kchecks
 from ..utils.tensorflow.keras import graph as kgraph
 
