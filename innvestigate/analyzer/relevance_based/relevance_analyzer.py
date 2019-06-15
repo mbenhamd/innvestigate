@@ -11,7 +11,7 @@ import six
 import inspect
 import tensorflow.keras
 import tensorflow.keras.backend as K
-import tensorflow.keras.engine.topology
+import keras.engine.topology
 import tensorflow.keras.models
 import tensorflow.keras.layers
 import tensorflow.keras.layers.convolutional
