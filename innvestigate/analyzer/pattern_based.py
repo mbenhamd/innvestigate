@@ -10,8 +10,8 @@ from __future__ import\
 import tensorflow.keras.activations
 import keras.engine.topology
 import tensorflow.keras.layers
-import tensorflow.keras.layers.core
-import tensorflow.keras.layers.pooling
+import keras.layers.core
+import keras.layers.pooling
 import tensorflow.keras.models
 import tensorflow.keras
 import numpy as np
