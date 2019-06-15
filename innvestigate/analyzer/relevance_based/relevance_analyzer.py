@@ -25,7 +25,7 @@ import keras.layers.pooling
 from .. import base
 from innvestigate import layers as ilayers
 from innvestigate import utils as iutils
-import innvestigate.utils.tensorflow.keras as kutils
+from innvestigate.utils.tensorflow.keras import keras as kutils
 from innvestigate.utils.tensorflow.keras import checks as kchecks
 from innvestigate.utils.tensorflow.keras import graph as kgraph
 from . import relevance_rule as rrule
