@@ -8,7 +8,7 @@ from __future__ import\
 ###############################################################################
 
 import tensorflow.keras.activations
-import tensorflow.keras.engine.topology
+import keras.engine.topology
 import tensorflow.keras.layers
 import tensorflow.keras.layers.core
 import tensorflow.keras.layers.pooling
