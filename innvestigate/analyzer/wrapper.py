@@ -104,7 +104,7 @@ class AugmentReduceBase(WrapperBase):
             raise NotImplementedError("Keras-based subanalyzer required.")
 
     def create_analyzer_model(self):
-        if not self._tensorflow.keras_based_augment_reduce:
+        if not self._keras_based_augment_reduce:
             return
 
         self._subanalyzer.create_analyzer_model()
@@ -140,7 +140,7 @@ class AugmentReduceBase(WrapperBase):
         self._subanalyzer._analyzer_model = new_model
 
     def analyze(self, X, *args, **kwargs):
-        if self._tensorflow.keras_based_augment_reduce is True:
+        if self._keras_based_augment_reduce is True:
             if not hasattr(self._subanalyzer, "_analyzer_model"):
                 self.create_analyzer_model()
 
@@ -164,7 +164,7 @@ class AugmentReduceBase(WrapperBase):
         else:
             raise DeprecationWarning("Not supported anymore.")
 
-    def _tensorflow.keras_get_constant_inputs(self):
+    def _keras_get_constant_inputs(self):
         return list()
 
     def _augment(self, X):
@@ -261,28 +261,28 @@ class PathIntegrator(AugmentReduceBase):
     def __init__(self, subanalyzer, *args, **kwargs):
         steps = kwargs.pop("steps", 16)
         self._reference_inputs = kwargs.pop("reference_inputs", 0)
-        self._tensorflow.keras_constant_inputs = None
+        self._keras_constant_inputs = None
         super(PathIntegrator, self).__init__(subanalyzer,
                                              *args,
                                              augment_by_n=steps,
                                              **kwargs)
 
-    def _tensorflow.keras_set_constant_inputs(self, inputs):
+    def _keras_set_constant_inputs(self, inputs):
         tmp = [K.variable(x) for x in inputs]
-        self._tensorflow.keras_constant_inputs = [
+        self._keras_constant_inputs = [
             tensorflow.keras.layers.Input(tensor=x, shape=x.shape[1:])
             for x in tmp]
 
-    def _tensorflow.keras_get_constant_inputs(self):
+    def _keras_get_constant_inputs(self):
         return self._tensorflow.keras_constant_inputs
 
     def _compute_difference(self, X):
-        if self._tensorflow.keras_constant_inputs is None:
+        if self._keras_constant_inputs is None:
             tmp = kutils.broadcast_np_tensors_to_tensorflow.keras_tensors(
                 X, self._reference_inputs)
-            self._tensorflow.keras_set_constant_inputs(tmp)
+            self._keras_set_constant_inputs(tmp)
 
-        reference_inputs = self._tensorflow.keras_get_constant_inputs()
+        reference_inputs = self._keras_get_constant_inputs()
         return [tensorflow.keras.layers.Subtract()([x, ri])
                 for x, ri in zip(X, reference_inputs)]
 
@@ -292,7 +292,7 @@ class PathIntegrator(AugmentReduceBase):
                for x in tmp]
 
         difference = self._compute_difference(X)
-        self._tensorflow.keras_difference = difference
+        self._keras_difference = difference
         # Make broadcastable.
         difference = [ilayers.Reshape((-1, 1)+K.int_shape(x)[1:])(x)
                       for x in difference]
@@ -304,7 +304,7 @@ class PathIntegrator(AugmentReduceBase):
             axis=1)
         path_steps = [multiply_with_linspace(d) for d in difference]
 
-        reference_inputs = self._tensorflow.keras_get_constant_inputs()
+        reference_inputs = self._keras_get_constant_inputs()
         ret = [tensorflow.keras.layers.Add()([x, p]) for x, p in zip(reference_inputs, path_steps)]
         ret = [ilayers.Reshape((-1,)+K.int_shape(x)[2:])(x) for x in ret]
         return ret
@@ -312,7 +312,7 @@ class PathIntegrator(AugmentReduceBase):
     def _reduce(self, X):
         tmp = super(PathIntegrator, self)._reduce(X)
         difference = self._tensorflow.keras_difference
-        del self._tensorflow.keras_difference
+        del self._keras_difference
 
         return [tensorflow.keras.layers.Multiply()([x, d])
                 for x, d in zip(tmp, difference)]
