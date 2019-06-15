@@ -17,7 +17,7 @@ import numpy as np
 from . import base
 from .. import layers as ilayers
 from .. import utils as iutils
-from ..utils import tensorflow.keras as kutils
+from ..utils.tensorflow import keras as kutils
 
 
 __all__ = [
