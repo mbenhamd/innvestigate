@@ -10,7 +10,7 @@ import time
 
 import tensorflow.keras.backend as K
 from tensorflow.keras.utils import Sequence
-from tensorflow.keras.utils.data_utils import OrderedEnqueuer, GeneratorEnqueuer
+from keras.utils.data_utils import OrderedEnqueuer, GeneratorEnqueuer
 
 import innvestigate.utils
 
