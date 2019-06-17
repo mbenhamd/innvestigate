@@ -9,7 +9,7 @@ from __future__ import\
 
 import tensorflow.keras.activations
 import keras.engine.topology
-import tensorflow.keras.layers
+import keras.layers
 import keras.layers.core
 import keras.layers.pooling
 import keras.models
