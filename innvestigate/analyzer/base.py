@@ -379,7 +379,7 @@ class AnalyzerNetworkBase(AnalyzerBase):
                 batch_shape=[None, None], dtype=np.int32,
                 name='iNNvestigate_neuron_indexing')
             self._special_helper_layers.append(
-                neuron_indexing._tensorflow.keras_history[0])
+                neuron_indexing._keras_history[0])
             analysis_inputs.append(neuron_indexing)
             # The indexing tensor should not be analyzed.
             stop_analysis_at_tensors.append(neuron_indexing)
