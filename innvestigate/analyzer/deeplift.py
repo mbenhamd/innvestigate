@@ -10,7 +10,7 @@ from __future__ import\
 
 import importlib
 import tensorflow.keras.backend as K
-import tensorflow.keras.layers
+import keras.layers
 import numpy as np
 import tempfile
 import warnings
@@ -144,7 +144,7 @@ class DeepLIFT(base.ReverseAnalyzerBase):
         self._reference_activations = {}
 
         # Create references and graph inputs.
-        tmp = kutils.broadcast_np_tensors_to_tensorflow.keras_tensors(
+        tmp = kutils.broadcast_np_tensors_to_keras_tensors(
             model.inputs, self._reference_inputs)
         tmp = [K.variable(x) for x in tmp]
 
@@ -319,7 +319,7 @@ class DeepLIFTWrapper(base.AnalyzerNetworkBase):
         self._func = deeplift_model.get_target_contribs_func(
             find_scores_layer_name=score_layer_names,
             pre_activation_target_layer_name=target_layer_name)
-        self._references = kutils.broadcast_np_tensors_to_tensorflow.keras_tensors(
+        self._references = kutils.broadcast_np_tensors_to_keras_tensors(
             self._model.inputs, self._reference_inputs)
 
     def _analyze_with_deeplift(self, X, neuron_idx, batch_size):
