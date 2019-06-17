@@ -10,15 +10,15 @@ from builtins import zip
 
 import tensorflow.keras
 import tensorflow.keras.backend as K
-import tensorflow.keras.engine.topology
+import keras.engine.topology
 import tensorflow.keras.models
 import tensorflow.keras.layers
-import tensorflow.keras.layers.convolutional
-import tensorflow.keras.layers.core
-import tensorflow.keras.layers.local
-import tensorflow.keras.layers.noise
-import tensorflow.keras.layers.normalization
-import tensorflow.keras.layers.pooling
+import keras.layers.convolutional
+import keras.layers.core
+import keras.layers.local
+import keras.layers.noise
+import keras.layers.normalization
+import keras.layers.pooling
 import numpy as np
 
 
