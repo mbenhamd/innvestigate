@@ -13,7 +13,7 @@ import tensorflow.keras
 import tensorflow.keras.backend as K
 import keras.engine.topology
 import tensorflow.keras.models
-import tensorflow.keras.layers
+import keras.layers
 import keras.layers.convolutional
 import keras.layers.core
 import keras.layers.local
