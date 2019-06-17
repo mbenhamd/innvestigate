@@ -99,7 +99,7 @@ class AugmentReduceBase(WrapperBase):
         if isinstance(self._subanalyzer, base.AnalyzerNetworkBase):
             # Take the tensorflow.keras analyzer model and
             # add augment and reduce functionality.
-            self._tensorflow.keras_based_augment_reduce = True
+            self._keras_based_augment_reduce = True
         else:
             raise NotImplementedError("Keras-based subanalyzer required.")
 
@@ -132,7 +132,7 @@ class AugmentReduceBase(WrapperBase):
         # print(type(new_inputs), type(extra_inputs))
         tmp = iutils.to_list(model(new_inputs+extra_inputs))
         new_outputs = iutils.to_list(self._reduce(tmp))
-        new_constant_inputs = self._tensorflow.keras_get_constant_inputs()
+        new_constant_inputs = self._keras_get_constant_inputs()
 
         new_model = tensorflow.keras.models.Model(
             inputs=inputs+extra_inputs+new_constant_inputs,
@@ -278,7 +278,7 @@ class PathIntegrator(AugmentReduceBase):
 
     def _compute_difference(self, X):
         if self._keras_constant_inputs is None:
-            tmp = kutils.broadcast_np_tensors_to_tensorflow.keras_tensors(
+            tmp = kutils.broadcast_np_tensors_to_keras_tensors(
                 X, self._reference_inputs)
             self._keras_set_constant_inputs(tmp)
 
@@ -311,7 +311,7 @@ class PathIntegrator(AugmentReduceBase):
 
     def _reduce(self, X):
         tmp = super(PathIntegrator, self)._reduce(X)
-        difference = self._tensorflow.keras_difference
+        difference = self._keras_difference
         del self._keras_difference
 
         return [tensorflow.keras.layers.Multiply()([x, d])
