@@ -10,7 +10,7 @@ import six
 
 
 import tensorflow.keras.backend as K
-import keras.layers
+import tensorflow.keras.layers
 import tensorflow.keras.models
 import numpy as np
 import warnings
