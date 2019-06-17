@@ -18,7 +18,7 @@ from ... import utils as iutils
 
 __all__ = [
     "apply",
-    "broadcast_np_tensors_to_tensorflow.keras_tensors",
+    "broadcast_np_tensors_to_keras_tensors",
 ]
 
 
@@ -53,7 +53,7 @@ def apply(layer, inputs):
     return iutils.to_list(ret)
 
 
-def broadcast_np_tensors_to_keras_tensors(tensorflow.keras_tensors, np_tensors):
+def broadcast_np_tensors_to_keras_tensors(keras_tensors, np_tensors):
     """Broadcasts numpy tensors to the shape of Keras tensors.
 
     :param tensorflow.keras_tensors: The Keras tensors with the target shapes.
@@ -64,14 +64,14 @@ def broadcast_np_tensors_to_keras_tensors(tensorflow.keras_tensors, np_tensors):
     def none_to_one(tmp):
         return [1 if x is None else x for x in tmp]
 
-    tensorflow.keras_tensors = iutils.to_list(tensorflow.keras_tensors)
+    keras_tensors = iutils.to_list(keras_tensors)
 
     if isinstance(np_tensors, list):
         ret = [np.broadcast_to(ri, none_to_one(K.int_shape(x)))
-               for x, ri in zip(tensorflow.keras_tensors, np_tensors)]
+               for x, ri in zip(keras_tensors, np_tensors)]
     else:
         ret = [np.broadcast_to(np_tensors,
                                none_to_one(K.int_shape(x)))
-               for x in tensorflow.keras_tensors]
+               for x in keras_tensors]
 
     return ret
