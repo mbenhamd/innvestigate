@@ -12,8 +12,8 @@ import six
 
 import inspect
 import tensorflow.keras.backend as K
-import tensorflow.keras.engine.topology
-import tensorflow.keras.layers
+import keras.engine.topology
+import keras.layers
 import tensorflow.keras.models
 import numpy as np
 
