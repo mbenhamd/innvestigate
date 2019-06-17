@@ -69,7 +69,7 @@ def get_input_layers(layer):
     for node_index in range(len(layer._inbound_nodes)):
         Xs = iutils.to_list(layer.get_input_at(node_index))
         for X in Xs:
-            ret.add(X._tensorflow.keras_history[0])
+            ret.add(X._keras_history[0])
 
     return ret
 
