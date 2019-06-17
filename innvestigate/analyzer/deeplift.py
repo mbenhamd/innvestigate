@@ -10,7 +10,7 @@ from __future__ import\
 
 import importlib
 import tensorflow.keras.backend as K
-import keras.layers
+import tensorflow.keras.layers
 import numpy as np
 import tempfile
 import warnings
