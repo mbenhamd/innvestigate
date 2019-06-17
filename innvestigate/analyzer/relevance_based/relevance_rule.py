@@ -24,7 +24,7 @@ import numpy as np
 
 from innvestigate import layers as ilayers
 from innvestigate import utils as iutils
-import innvestigate.utils.tensorflow.keras as kutils
+from innvestigate.utils.tensorflow import keras as kutils
 from innvestigate.utils.tensorflow.keras import backend as iK
 from innvestigate.utils.tensorflow.keras import graph as kgraph
 from . import utils as rutils
