@@ -53,7 +53,7 @@ def apply(layer, inputs):
     return iutils.to_list(ret)
 
 
-def broadcast_np_tensors_to_tensorflow.keras_tensors(tensorflow.keras_tensors, np_tensors):
+def broadcast_np_tensors_to_keras_tensors(tensorflow.keras_tensors, np_tensors):
     """Broadcasts numpy tensors to the shape of Keras tensors.
 
     :param tensorflow.keras_tensors: The Keras tensors with the target shapes.
