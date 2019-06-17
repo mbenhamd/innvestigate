@@ -11,7 +11,7 @@ from builtins import range, zip
 import tensorflow.keras
 import tensorflow.keras.backend as K
 import tensorflow.keras.constraints
-import keras.layers
+import tensorflow.keras.layers
 import tensorflow.keras.regularizers
 from keras.utils import conv_utils
 import numpy as np
