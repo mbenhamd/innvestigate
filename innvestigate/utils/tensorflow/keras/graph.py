@@ -362,7 +362,7 @@ def pre_softmax_tensors(Xs, should_find_softmax=True):
     Xs = iutils.to_list(Xs)
     ret = []
     for x in Xs:
-        layer, node_index, tensor_index = x._tensorflow.keras_history
+        layer, node_index, tensor_index = x._keras_history
         if kchecks.contains_activation(layer, activation="softmax"):
             softmax_found = True
             if isinstance(layer, tensorflow.keras.layers.Activation):
