@@ -39,6 +39,7 @@ __all__ = [
 
 
 SUPPORTED_LAYER_PATTERNNET = (
+    tensorflow.keras.layers.InputLayer,
     keras.engine.topology.InputLayer,
     keras.layers.convolutional.Conv2D,
     keras.layers.core.Dense,
