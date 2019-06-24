@@ -330,7 +330,7 @@ class AnalyzerNetworkBase(AnalyzerBase):
         self._allow_lambda_layers = allow_lambda_layers
         self._add_model_check(
             lambda layer: (not self._allow_lambda_layers and
-                           isinstance(layer, keras.layers.Lambda)),
+                           isinstance(layer, tensorflow.keras.layers.Lambda)),
             ("Lamda layers are not allowed. "
              "To force use set allow_lambda_layers parameter."),
             check_type="exception",
