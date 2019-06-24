@@ -19,8 +19,8 @@ import numpy as np
 
 
 from . import checks as kchecks
-from ... import layers as ilayers
-from ... import utils as iutils
+from .... import layers as ilayers
+from .... import utils as iutils
 
 
 __all__ = [
