@@ -7,7 +7,7 @@ from __future__ import\
 ###############################################################################
 ###############################################################################
 
-
+import tensorflow
 import tensorflow.keras.backend as K
 import tensorflow.keras.utils
 import math
